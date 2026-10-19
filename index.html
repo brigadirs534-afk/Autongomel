@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071b2c">
+  <meta name="description" content="Ikuti Auto Ngomel di TikTok, Facebook, dan YouTube. Cerita seru, karakter unik, dan hiburan setiap hari.">
+  <title>Auto Ngomel | Social Media</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #fff;
+      --muted: rgba(255,255,255,.73);
+      --glass: rgba(255,255,255,.085);
+      --border: rgba(255,255,255,.18);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { min-height: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px;
+      overflow-x: hidden;
+      position: relative;
+      isolation: isolate;
+      background: #071b2c;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .ambient {
+      position: fixed;
+      z-index: -1;
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      filter: blur(95px);
+      opacity: .55;
+      pointer-events: none;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .ambient.one {
+      background: #00d6a0;
+      top: -150px;
+      left: -145px;
+    }
+
+    .ambient.two {
+      background: #246bfe;
+      right: -150px;
+      bottom: -160px;
+      animation-delay: -5s;
+    }
+
+    .ambient.three {
+      width: 260px;
+      height: 260px;
+      background: #784bff;
+      top: 42%;
+      left: 38%;
+      opacity: .23;
+      animation-duration: 16s;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 390px;
+      text-align: center;
+      padding: 30px 22px 22px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px;
+      background: rgba(255,255,255,.025);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      animation: fade-up .8s ease both;
+    }
+
+    .profile-ring {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 17px;
+      padding: 3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00efb0, #3983ff, #a855f7);
+      box-shadow: 0 0 30px rgba(0,220,180,.24);
+    }
+
+    .profile-ring img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      border: 3px solid #0c2335;
+      border-radius: 50%;
+      background: #10283b;
+    }
+
+    h1 {
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin-bottom: 9px;
+    }
+
+    .description {
+      max-width: 295px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.85;
+    }
+
+    .section-label {
+      margin-bottom: 13px;
+      color: rgba(255,255,255,.61);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-button {
+      min-height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      padding: 14px 42px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--glass);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      transition: transform .22s ease, background .22s ease,
+                  border-color .22s ease, box-shadow .22s ease;
+      animation: fade-up .65s ease both;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .social-button:nth-child(2) { animation-delay: .10s; }
+    .social-button:nth-child(3) { animation-delay: .20s; }
+
+    .social-button:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.38);
+      box-shadow: 0 12px 28px rgba(0,220,180,.12);
+    }
+
+    .social-button:active { transform: scale(.95); }
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .social-icon svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+
+    .tiktok svg { fill: #fff; }
+    .facebook svg { fill: #65a7ff; }
+    .youtube svg { fill: #ff5555; }
+
+    .arrow {
+      position: absolute;
+      right: 17px;
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: rgba(255,255,255,.47);
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: .25px;
+    }
+
+    .heart { color: #00e5b0; }
+
+    a:focus-visible {
+      outline: 2px solid #00efb0;
+      outline-offset: 4px;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(55px, 40px) scale(1.13); }
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 380px) {
+      .container { padding: 26px 15px 20px; }
+      .profile-ring { width: 102px; height: 102px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient one" aria-hidden="true"></div>
+  <div class="ambient two" aria-hidden="true"></div>
+  <div class="ambient three" aria-hidden="true"></div>
+
+  <main class="container">
+    <div class="profile-ring">
+      <img src="logo.png" alt="Foto profil kucing Auto Ngomel">
+    </div>
+
+    <h1>Auto Ngomel</h1>
+    <p class="description">
+      Cerita unik, tingkah lucu, dan kisah benda-benda yang bisa ngomel.
+      Yuk, ikuti dan jangan sampai ketinggalan video terbaru!
+    </p>
+
+    <p class="section-label">Temukan kami di</p>
+
+    <nav class="social-links" aria-label="Tautan media sosial">
+      <a class="social-button" href="https://www.tiktok.com/@auto.ngomel?_r=1&amp;_t=ZS-9AfZSVGWkRo" target="_blank" rel="noopener noreferrer">
+        <span class="social-icon tiktok" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19.6 6.3a6.6 6.6 0 0 1-4.1-1.4v9.3a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.4a2.9 2.9 0 1 0 1.8 2.7V2h3.3c.2 2.2 1.8 4 4 4.4z"/></svg>
+        </span>
+        TikTok
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="social-button" href="https://www.facebook.com/share/1cfhp4QYFP/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+        <span class="social-icon facebook" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2v-2c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21z"/></svg>
+        </span>
+        Facebook
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="social-button" href="https://youtube.com/@szuniqs?si=lDHyiui5kQyKnk8c" target="_blank" rel="noopener noreferrer">
+        <span class="social-icon youtube" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+        </span>
+        YouTube
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <footer class="footer">
+      Dibuat dengan <span class="heart">♥</span> oleh Auto Ngomel
+    </footer>
+  </main>
+</body>
+</html>
